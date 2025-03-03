@@ -52,7 +52,7 @@
   .rotate {
     animation: rotation 7s infinite linear;
     position: absolute;
-    top: 760px;
+    top: 780px;
     left: -40%;
     width: 350px;
     height: 350px;
@@ -74,8 +74,9 @@
     box-sizing: border-box;
     transform: translate(-50%, -50%);
     font-size: 70px;
-    bottom: 0px;
+    bottom: -30px;
     left: 49%;
+    pointer-events: none;
   }
 
   .wf h2:nth-child(1) {
@@ -181,46 +182,34 @@
       <image src="b5.jpg" class="img" height="710px" width="100%" />
     </div>
     <div>
-  <h3 class="doa">Happy birthday son semoga panjang umur, semoga makin cantik, makin sehat, makin kaya  semoga di
-    tahun ini semua doa mu terkabulkan
-    <br>Wish u all the best lah pokoknya</h3>
-  <img id="musicIcon" src="piring.png" class="rotate" alt="Music Icon">
-  <button id="stopButton" style="display: none;">Stop Music</button>
-</div>
+      <h3 class="doa">Happy birthday son semoga panjang umur, semoga makin cantik, makin sehat, makin kaya 🤭🤣 semoga di
+        tahun ini semua doa mu terkabulkan
+        <br>Wish u all the best lah pokoknya</h3>
+      <img src="piring.png" class="rotate" alt="Music Icon" id="musicIcon">
+    </div>
+  </section>
 
-</section>
+  <script>
+    let audio = new Audio('daylight.mp3');
+    audio.loop = true;
+    audio.volume = 0.8;
 
-<script>
-  let audio = new Audio('daylight.mp3');
-  audio.loop = true;
-  audio.volume = 0.8;
-  let isPlaying = false;
-
-  // Fungsi untuk memulai musik secara otomatis saat halaman dimuat
-  window.onload = function() {
-    audio.play();
-    isPlaying = true;
-    document.getElementById('stopButton').style.display = 'block';
-  };
-
-  document.getElementById('musicIcon').addEventListener('click', function() {
-    if (isPlaying) {
-      audio.pause();
-      isPlaying = false;
-      document.getElementById('stopButton').style.display = 'none';
-    } else {
+    function playSound() {
       audio.play();
-      isPlaying = true;
-      document.getElementById('stopButton').style.display = 'block';
+      alert("hallo Sonia selamat ulang tahun yah");
+      document.getElementById('musicIcon').onclick = stopSound;
     }
-  });
 
-  document.getElementById('stopButton').addEventListener('click', function() {
-    audio.pause();
-    isPlaying = false;
-    this.style.display = 'none';
-  });
-</script>
+    function stopSound() {
+      audio.pause();
+      alert("Musik telah dihentikan! ⏸️ 😊");
+      document.getElementById('musicIcon').onclick = playSound;
+    }
+
+    playSound(); // Start playing the music immediately when the page loads.
+
+    document.getElementById('musicIcon').onclick = stopSound;
+  </script>
 
 </body>
-</html>
+      </html>
